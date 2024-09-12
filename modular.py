@@ -6,8 +6,8 @@ ICAI, Universidad Pontificia Comillas
 
 Grupo: GPxxx
 Integrantes:
-    - XX
-    - XX
+    - Sergio Fernández
+    - Liam Esgueva
 
 Descripción:
 Librería para la realización de cálculos y resolución de problemas de aritmética modular.
