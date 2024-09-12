@@ -35,7 +35,16 @@ class IncompatibleEquationError(Exception):
         es_primo(4)=false
 """
 def es_primo(n:int)->bool:
-    pass
+   primo = True
+   if n < 2:
+       primo = False
+   else:
+       for x in range(2, int(n**0.5) + 1):
+           if n % x == 0:
+               primo = False
+               break
+   return primo
+
 
 """ Recibe dos enteros a y b y devuelva la lista de números primos en el intervalo [a, b)
 
