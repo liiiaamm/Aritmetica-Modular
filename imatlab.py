@@ -17,7 +17,7 @@ lanzar´a la interfaz de usuario para el modo interactivo.
 """
 
 from typing import TextIO
-import modular
+import modular 
 import sys
 
 
@@ -38,15 +38,29 @@ por lotes de IMAT-LAB para la entrada fin, guardando el resultado en el fichero 
         run_commands(sys.stdin,sys.stdout) lanza el modo interactivo y ejecuta línea por línea los comandos que
             el usuario lanza desde la entrada estándar.
 """
+
 def run_commands(fin:TextIO,fout:TextIO):  #Para el modo por lotes
-    pass
+    comands_list = ["primo", "primos", "factorizar", "mcd", "coprimos", "pow", "inv", "euler", "legendre", "resolverSistema", "raiz", "ecCuadratica"]
+    lines = fin.readlines()
+    for line in lines:
+        
+        command, data = line.split("(")
+        data = data.replace(")"," ").replace("\n", "")
+        if command == "primo" and len(command) == 5:
+            fout.write(str(modular.es_primo(int(data)))+"/n")
+
+
+    
+            
+
+    
 
 if __name__ == "__main__":
     pass
 
-
-if len(sys.argv) >= 1:
-    comando = sys.argv[1]
+def separate_command(command:str):
+    
+    pass
 
 def process_command(command:str, args:list):
     if command == "primo":
@@ -85,5 +99,4 @@ def process_command(command:str, args:list):
     if command == "ecCuadratica":
         a,b,c,p = int(args)
         return modular.ecuacion_cuadratica(a,b,c,p)
-
 

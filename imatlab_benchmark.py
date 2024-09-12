@@ -41,6 +41,8 @@ def testRun(in_file:str, out_file:str):
         with open(out_file,"w",encoding="utf-8") as fout:
             imatlab.run_commands(fin,fout)
 
+    
+
 def measureTime(in_file:str, out_file:str)->float:
     """ Mide el tiempo medio de ejecución de  imatlab leyendo la entrada desde el fichero
     in_file y guardando la salida en el fichero out_file.
