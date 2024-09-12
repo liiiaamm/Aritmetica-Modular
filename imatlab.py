@@ -100,3 +100,18 @@ def process_command(command:str, args:list):
         a,b,c,p = int(args)
         return modular.ecuacion_cuadratica(a,b,c,p)
 
+def interactive_mode():
+    while True:
+        print("****Menú de operaciones****")
+        line = sys.stdin.readline().strip()
+        command, args = separate_command(line)
+        print(process_command(command,args))
+
+
+
+print("Desea entrar en modo interactivo? si/no")
+line = sys.stdin.readline().strip()
+if line.lower() == "si":
+    interactive_mode()
+else: 
+    run_commands()
