@@ -47,7 +47,7 @@ def run_commands(fin:TextIO,fout:TextIO):  #Para el modo por lotes
         command, data = line.split("(")
         data = data.replace(")"," ").replace("\n", "")
         if command == "primo" and len(command) == 5:
-            fout.write(str(modular.es_primo(int(data)))+"/n")
+            fout.write(str(modular.es_primo(int(data))))
 
 
     
