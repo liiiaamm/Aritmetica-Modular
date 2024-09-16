@@ -35,15 +35,21 @@ class IncompatibleEquationError(Exception):
         es_primo(4)=false
 """
 def es_primo(n:int)->bool:
-   primo = True
-   if n < 2:
-       primo = False
-   else:
-       for x in range(2, int(n**0.5) + 1):
-           if n % x == 0:
-               primo = False
-               break
-   return primo
+    if n <= 1:
+        return f"{False}\n"
+    if n <= 3:
+        return True  # 2 y 3 son primos
+    if n % 2 == 0 or n % 3 == 0:
+        return f"{False}\n"  # Elimina múltiplos de 2 y 3
+
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return f"{False}\n"
+        i += 6  # Solo considerar números de la forma 6k ± 1
+
+    return f"{True}\n"
+
 
 
 """ Recibe dos enteros a y b y devuelva la lista de números primos en el intervalo [a, b)
