@@ -19,6 +19,7 @@ lanzar´a la interfaz de usuario para el modo interactivo.
 from typing import TextIO
 import modular 
 import sys
+import re
 
 
 """ Recibe un manejador fin de un fichero de texto ya abierto para lectura y otro de un fichero de salida
@@ -40,16 +41,23 @@ por lotes de IMAT-LAB para la entrada fin, guardando el resultado en el fichero 
 """
 
 def run_commands(fin:TextIO,fout:TextIO):  #Para el modo por lotes
-    comands_list = ["primo", "primos", "factorizar", "mcd", "coprimos", "pow", "inv", "euler", "legendre", "resolverSistema", "raiz", "ecCuadratica"]
-    lines = fin.readlines()
-    for line in lines:
+    patron = re.compile(r'(\w+)\((\d+)\)')
+    all_functions =["es_primo"]
+    for line in fin:
+    
+        coincidencia = patron.match(line.strip())  # Eliminar espacios y buscar coincidencia
+        if coincidencia:
+            nombre_funcion, numero = coincidencia.groups()  # Extraer el nombre de la función y el número
+            nombre_funcion = all_functions[0]
+            numero = int(numero)  # Convertir el número de cadena a entero
+
+            # Obtener la función correspondiente usando getattr
+            funcion = getattr(modular, nombre_funcion, None)
+            
+            if funcion:
+                # Ejecutar la función con el número y obtener el resultado
+                fout.write(str(funcion(numero))+"\n")
         
-        command, data = line.split("(")
-        data = data.replace(")"," ").replace("\n", "")
-        if command == "primo" and len(command) == 5:
-            fout.write(str(modular.es_primo(int(data))))
-
-
     
             
 

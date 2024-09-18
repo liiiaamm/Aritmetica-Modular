@@ -100,7 +100,7 @@ if __name__ == "__main__":
         #Comentar una línea o la otra para alternar benchmarking/profiling
         try:
             runtime.append(measureTime(in_files[i],out_files[i]))
-            # profile(in_files[i],out_files[i])
+            #profile(in_files[i],out_files[i])
         except IOError:
             runtime.append(0)
             print("El fichero "+in_files[i]+" no existe.\n")

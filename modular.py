@@ -85,8 +85,39 @@ correspondientes exponentes en la descomposición en producto de factores primos
         factorizar(12)={2: 2, 3: 1}
         factorizar(0)={}
 """
+"""
 def factorizar(n:int)->Dict[int,int]:
-    pass
+    if n == 0:
+        return {}
+    
+    factores = {}
+    
+    # Primero probamos divisibilidad por 2
+    exponente = 0
+    while n % 2 == 0:
+        n //= 2
+        exponente += 1
+    if exponente > 0:
+        factores[2] = exponente
+    
+    # Ahora probamos con los números impares a partir de 3
+    divisor = 3
+    while divisor * divisor <= n:
+        exponente = 0
+        while n % divisor == 0:
+            n //= divisor
+            exponente += 1
+        if exponente > 0:
+            factores[divisor] = exponente
+        divisor += 2  # Siguiente número impar
+    
+    # Si queda un factor primo mayor que 1
+    if n > 1:
+        factores[n] = 1
+    
+    return factores
+"""
+
 
 """ Calcula el máximo común divisor de dos enteros a y b.
     Args:
