@@ -34,7 +34,7 @@ class IncompatibleEquationError(Exception):
         es_primo(5)=true
         es_primo(4)=false
 """
-def es_primo(n:int)->bool:
+def es_primo(n:int)->str:
     if n <= 1:
         return f"{False}\n"
     if n <= 3:
@@ -48,7 +48,7 @@ def es_primo(n:int)->bool:
             return f"{False}\n"
         i += 6  # Solo considerar números de la forma 6k ± 1
 
-    return f"{True}\n"
+    return f"{True}"
 
 
 

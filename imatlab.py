@@ -52,7 +52,7 @@ def run_commands(fin:TextIO,fout:TextIO):  #Para el modo por lotes
             numero = int(numero)  # Convertir el número de cadena a entero
 
             # Obtener la función correspondiente usando getattr
-            funcion = getattr(modular, nombre_funcion, None)
+            funcion = getattr(modular, nombre_funcion)
             
             if funcion:
                 # Ejecutar la función con el número y obtener el resultado
