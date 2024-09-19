@@ -42,7 +42,7 @@ por lotes de IMAT-LAB para la entrada fin, guardando el resultado en el fichero 
 
 def run_commands(fin:TextIO,fout:TextIO):  #Para el modo por lotes
     patron = re.compile(r'(\w+)\((\d+)\)')
-    all_functions =["es_primo"]
+    all_functions =["es_primo", "lista_primos", "factorizar", "mcd"]
     for line in fin:
     
         coincidencia = patron.match(line.strip())  # Eliminar espacios y buscar coincidencia
